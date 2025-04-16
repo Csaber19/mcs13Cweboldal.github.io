@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Weboldal</title>
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+        header {
+            background-color: #2C3E50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        nav {
+            background-color: #34495E;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav a {
+            color: white;
+            padding: 12px 18px;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 0 10px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #1ABC9C;
+        }
+        section {
+            padding:30px;
+            margin: 20px auto;
+            max-width: 1200px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #2C3E50;
+            color: white;
+            text-align: center;
+            padding: 0px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            margin: 0;
+        }
+        h1, h2 {
+            margin: 0;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .top-right-image {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 150px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        iframe {
+            height: 800px;
+            width: 100%;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+        }
+        .hidden-links {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Üdvözöljük weboldalon!</h1>
+    </header>
+    
+    <img src="Banki.jpg" alt="Banki.jpeg" class="top-right-image">
+    
+    <nav>
+        <a href="#" class="active" onclick="changePage('11')">11C</a>
+        <a href="#" class="active" onclick="changePage('12')">12C</a>
+        <a href="#" class="active" onclick="changePage('12')">13C</a>
+        <div id="additional-links" class="hidden-links">
+            <p></p>
+            <a href="#" onclick="changePage('szamitogepes')">Digitális Áramkörök</a>
+            <a href="#" onclick="changePage('szamitogepes')">Számítógépes rendszerüzemeltetés</a>
+            <a href="#" onclick="changePage('mikrokontroller')">Mikrovezérlő programozás</a>
+            <a href="#" onclick="changePage('elektrotechnika')">Elektrotechnika</a>
+            <a href="#" onclick="changePage('Munkavalaloi idegen nyelven')">Munkaválalói idegn nyelven</a>
+        </div>
+    </nav>
+ 
+    <section id="content">
+        <h2>Üdvözlöm a weboldalamon!</h2>
+    </section>
+ 
+    <script>
+        function changePage(page) {
+            const links = document.querySelectorAll("nav a");
+            links.forEach(link => link.classList.remove("active"));
+            const activeLink = document.querySelector(`nav a[href="#"][onclick="changePage('${page}')"]`);
+            activeLink.classList.add("active");
+ 
+            const content = document.getElementById("content");
+            switch(page) {
+                case '11':
+                    content.innerHTML = '<h2>Üdvözlöm a weboldalamon!</h2>';
+                    document.getElementById('additional-links').classList.remove('hidden-links');
+                    break;
+                    case 'szamitogepes':
+                    content.innerHTML = '<h2>Számítógépes rendszerüzemeltetés</h2><iframe src="https://dufoffice365.sharepoint.com/sites/11.C_Elektrotechnika-elektronika/_layouts/15/Doc.aspx?sourcedoc={5df1bbbc-86cf-44b4-a781-66a6cd50a466}&amp;action=embedview" width="476px" height="288px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> document, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>';
+                    break;
+                    
+                case 'tizenkettoc':
+                    content.innerHTML = '<h2>12C</h2>';
+                    document.getElementById('additional-links').classList.add('hidden-links'); // Ha nincs több link, eltüntethetjük
+                    break;
+                case 'szamitogepes':
+                    content.innerHTML = '<h2>Számítógépes rendszerüzemeltetés</h2><iframe src="https://dufoffice365.sharepoint.com/sites/11.C_Elektrotechnika-elektronika/_layouts/15/Doc.aspx?sourcedoc={5df1bbbc-86cf-44b4-a781-66a6cd50a466}&amp;action=embedview" width="476px" height="288px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> document, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>';
+                    break;
+                case 'mikrokontroller':
+                    content.innerHTML = '<h2>Mikrokontroller programozás</h2><iframe src="https://dufoffice365-my.sharepoint.com/personal/72515769488_tanulo_bankisuli_hu/_layouts/15/Doc.aspx?sourcedoc={f1fd3b11-12b4-497c-9018-24d6486b3ffa}&amp;action=embedview" width="476px" height="288px" frameborder="0">Ez egy beágyazott <a target="_blank" href="https://office.com">Microsoft Office</a>-dokumentum, amelynek szolgáltatója a(z) <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>';
+                    break;
+                case 'elektrotechnika':
+                    content.innerHTML = '<h2>Elektrotechnika</h2><iframe src="https://dufoffice365.sharepoint.com/sites/11.C_Elektrotechnika-elektronika/_layouts/15/Doc.aspx?sourcedoc={5df1bbbc-86cf-44b4-a781-66a6cd50a466}&amp;action=embedview" width="476px" height="288px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> document, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>';
+                    break;
+                case 'iot':
+                    content.innerHTML = '<h2>IoT</h2><p>Ez az oldal az IoT dokumentációról fog szólni.</p>';
+                    break;
+                case 'adatbazis':
+                    content.innerHTML = '<h2>Adatbázis kezelés</h2><p>Ez az oldal az adatbázis kezelés dokumentációról fog szólni.</p>';
+                    break;
+                    case '12':
+                    content.innerHTML = '<h2>Üdvözlöm a weboldalamon!</h2>';
+                    document.getElementById('additional-links').classList.add('hidden-links');
+                    break;
+                    case 'szamitogepes':
+                    content.innerHTML = '<h2>Számítógépes rendszerüzemeltetés</h2><iframe src="https://dufoffice365.sharepoint.com/sites/11.C_Elektrotechnika-elektronika/_layouts/15/Doc.aspx?sourcedoc={5df1bbbc-86cf-44b4-a781-66a6cd50a466}&amp;action=embedview" width="476px" height="288px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> document, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>';
+                    break;
+                    case 'Munkavalaloi idegen nyelven':
+                    content.innerHTML = '<h2>Számítógépes rendszerüzemeltetés</h2><iframe src="https://dufoffice365.sharepoint.com/sites/11.C_Elektrotechnika-elektronika/_layouts/15/Doc.aspx?sourcedoc={5df1bbbc-86cf-44b4-a781-66a6cd50a466}&amp;action=embedview" width="476px" height="288px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> document, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>';
+                    break;
+                case 'tizenkettoc':
+                    content.innerHTML = '<h2>12C</h2>';
+                    document.getElementById('additional-links').classList.add('hidden-links'); // Ha nincs több link, eltüntethetjük
+                    break;
+                    case 'Munkavalaloi idegen nyelven':
+                    content.innerHTML = '<h2>Munkaválalói idegen nyelv</h2><iframe src="https://dufoffice365.sharepoint.com/sites/11.C_Elektrotechnika-elektronika/_layouts/15/Doc.aspx?sourcedoc={5df1bbbc-86cf-44b4-a781-66a6cd50a466}&amp;action=embedview" width="476px" height="288px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> document, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>';
+                    break;
+                case 'szamitogepes':
+                    content.innerHTML = '<h2>Számítógépes rendszerüzemeltetés</h2><iframe src="https://dufoffice365.sharepoint.com/sites/11.C_Elektrotechnika-elektronika/_layouts/15/Doc.aspx?sourcedoc={5df1bbbc-86cf-44b4-a781-66a6cd50a466}&amp;action=embedview" width="476px" height="288px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> document, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>';
+                    break;
+                case 'mikrokontroller':
+                    content.innerHTML = '<h2>Mikrokontroller programozás</h2><iframe src="https://dufoffice365-my.sharepoint.com/personal/72515769488_tanulo_bankisuli_hu/_layouts/15/Doc.aspx?sourcedoc={f1fd3b11-12b4-497c-9018-24d6486b3ffa}&amp;action=embedview" width="476px" height="288px" frameborder="0">Ez egy beágyazott <a target="_blank" href="https://office.com">Microsoft Office</a>-dokumentum, amelynek szolgáltatója a(z) <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>';
+                    break;
+                case 'elektrotechnika':
+                    content.innerHTML = '<h2>Elektrotechnika</h2><iframe src="https://dufoffice365.sharepoint.com/sites/11.C_Elektrotechnika-elektronika/_layouts/15/Doc.aspx?sourcedoc={5df1bbbc-86cf-44b4-a781-66a6cd50a466}&amp;action=embedview" width="476px" height="288px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> document, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>';
+                    break;
+                case 'iot':
+                    content.innerHTML = '<h2>IoT</h2><p>Ez az oldal az IoT dokumentációról fog szólni.</p>';
+                    break;
+                case 'adatbazis':
+                    content.innerHTML = '<h2>Adatbázis kezelés</h2><p>Ez az oldal az adatbázis kezelés dokumentációról fog szólni.</p>';
+                    break;
+                    case '13':
+                    content.innerHTML = '<h2>Üdvözlöm a weboldalamon!</h2>';
+                    document.getElementById('additional-links').classList.add('hidden-links');
+                    break;
+                    
+            }
+            }
+
+</script>
+
+    <footer>
+        <p>Készítette Matucza Csaba</p>
+    </footer>
+</body>
+</html>
