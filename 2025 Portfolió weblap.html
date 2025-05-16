@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Weboldal</title>
+  <style>
+    body {
+      font-family: 'Verdana', sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #2C3E50;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+    nav {
+      background-color: #34495E;
+      text-align: center;
+      padding: 10px 0;
+    }
+    nav a {
+      color: white;
+      padding: 12px 18px;
+      text-decoration: none;
+      font-size: 16px;
+      margin: 0 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    nav a:hover {
+      background-color: #1ABC9C;
+    }
+    nav a.active {
+      background-color: #1ABC9C;
+    }
+    .top-right-image {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 150px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    section {
+      padding: 30px;
+      margin: 20px auto;
+      max-width: 1200px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    footer {
+      background-color: #2C3E50;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+    .hidden-links {
+      display: none;
+    }
+    .link-group {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .link-group a {
+      display: inline-block;
+      margin: 6px 12px;
+      background-color: #34495E;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    .link-group a:hover {
+      background-color: #1ABC9C;
+    }
+	iframe{
+	width: 90%;
+	height: 1500px;
+	border: none;
+	}
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Üdvözöljük weboldalon!</h1>
+  </header>
+
+  <img src="Banki.jpg" alt="Banki" class="top-right-image">
+
+  <nav>
+    <a href="#" id="link-11" onclick="selectClass('11')">11C</a>
+    <a href="#" id="link-12" onclick="selectClass('12')">12C</a>
+    <a href="#" id="link-13" onclick="selectClass('13')">13C</a>
+  </nav>
+
+  <div id="additional-links-11" class="hidden-links link-group">
+    <a href="#" onclick="changePage('elektrotechnika')">Elektrotechnika</a>
+    <a href="#" onclick="changePage('mikrokontroller')">Mikrovezérlő programozás</a>
+    <a href="#" onclick="changePage('programozas')">Programozás alapjai</a>
+    <a href="#" onclick="changePage('digiatlis')">Digitális Áramkörök</a>
+  </div>
+
+  <div id="additional-links-12" class="hidden-links link-group">
+    <a href="#" onclick="changePage('adatkezeles')">Adatbáziskezelés alapjai</a>
+    <a href="#" onclick="changePage('halozat')">Hálózatkezelés</a>
+    <a href="#" onclick="changePage('PLC')">PLC programozás</a>
+    <a href="#" onclick="changePage('Szamitogep')">Számítógép szimuláció</a>
+  </div>
+
+  <div id="additional-links-13" class="hidden-links link-group">
+    <a href="#" onclick="changePage('Munkavalalo')">Munkavállalói idegen nyelv</a>
+    <a href="#" onclick="changePage('IoT')">IoT</a>
+    <a href="#" onclick="changePage('Program')">Programfejlesztés</a>
+    <a href="#" onclick="changePage('CAD/CAM')">Robottechnika CAD/CAM</a>
+  </div>
+
+  <section id="content">
+    <h2>Üdvözlöm a weboldalamon!</h2>
+  </section>
+
+  <footer>
+    <p>Készítette: Matucza Csaba</p>
+  </footer>
+
+  <script>
+    let currentClass = null;
+
+    function selectClass(classId) {
+      currentClass = classId;
+      
+      ['11', '12', '13'].forEach(c => {
+        document.getElementById(`link-${c}`).classList.remove('active');
+        document.getElementById(`additional-links-${c}`).classList.add('hidden-links');
+      });
+      document.getElementById(`link-${classId}`).classList.add('active');
+      document.getElementById(`additional-links-${classId}`).classList.remove('hidden-links');
+      document.getElementById("content").innerHTML = `<h2>${classId}C osztály tananyagai</h2>`;
+    }
+
+    function changePage(page) {
+      const content = document.getElementById("content");
+      const pages = {
+        elektrotechnika: '<h2>Elektrotechnika</h2><p><iframe src="https://dufoffice365-my.sharepoint.com/personal/72591192377_tanulo_bankisuli_hu/_layouts/15/Doc.aspx?sourcedoc={c8deadac-6020-4fbf-bbba-96c92a8a93a3}&amp;action=embedview" width="476px" height="288px" frameborder="0">Ez egy beágyazott <a target="_blank" href="https://office.com">Microsoft Office</a>-dokumentum, amelynek szolgáltatója a(z) <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe></p>',
+        mikrokontroller: '<h2>Mikrovezérlő programozás</h2><p><iframe src="https://dufoffice365-my.sharepoint.com/personal/72591192377_tanulo_bankisuli_hu/_layouts/15/Doc.aspx?sourcedoc={5b9d2d65-3e25-44d7-9174-cc403c48f17c}&amp;action=embedview" width="476px" height="288px" frameborder="0">Ez egy beágyazott <a target="_blank" href="https://office.com">Microsoft Office</a>-dokumentum, amelynek szolgáltatója a(z) <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe></p>',
+        programozas: '<h2>Programozás alapjai</h2><p><iframe src="https://dufoffice365-my.sharepoint.com/personal/72591192377_tanulo_bankisuli_hu/_layouts/15/Doc.aspx?sourcedoc={0965a5fe-2589-47c9-b2e0-a859e3ddf3f1}&amp;action=embedview" width="476px" height="288px" frameborder="0">Ez egy beágyazott <a target="_blank" href="https://office.com">Microsoft Office</a>-dokumentum, amelynek szolgáltatója a(z) <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>.</p>',
+        digiatlis: '<h2>Digitális Áramkörök</h2><p><iframe src="https://dufoffice365-my.sharepoint.com/personal/72591192377_tanulo_bankisuli_hu/_layouts/15/Doc.aspx?sourcedoc={d69be189-5b3c-449a-8ee8-602bd3f7c5a9}&amp;action=embedview" width="476px" height="288px" frameborder="0">Ez egy beágyazott <a target="_blank" href="https://office.com">Microsoft Office</a>-dokumentum, amelynek szolgáltatója a(z) <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe></p>',
+       
+	   adatkezeles: '<h2>Adatbáziskezelés alapjai</h2><p><iframe src="https://dufoffice365-my.sharepoint.com/personal/72591192377_tanulo_bankisuli_hu/_layouts/15/Doc.aspx?sourcedoc={2c59997a-4406-4c44-80a9-19f91ab13366}&amp;action=embedview" width="476px" height="288px" frameborder="0">Ez egy beágyazott <a target="_blank" href="https://office.com">Microsoft Office</a>-dokumentum, amelynek szolgáltatója a(z) <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe></p>',
+        halozat: '<h2>Hálózatkezelés</h2><p><iframe src="https://dufoffice365-my.sharepoint.com/personal/72591192377_tanulo_bankisuli_hu/_layouts/15/Doc.aspx?sourcedoc={84fab4d6-df9b-44ab-97f0-4b305ee51835}&amp;action=embedview" width="476px" height="288px" frameborder="0">Ez egy beágyazott <a target="_blank" href="https://office.com">Microsoft Office</a>-dokumentum, amelynek szolgáltatója a(z) <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe></p>',
+        PLC: '<h2>PLC programozás</h2><p><iframe src="https://dufoffice365-my.sharepoint.com/personal/72591192377_tanulo_bankisuli_hu/_layouts/15/Doc.aspx?sourcedoc={693df63f-8a32-452b-8436-34f023076de6}&amp;action=embedview" width="476px" height="288px" frameborder="0">Ez egy beágyazott <a target="_blank" href="https://office.com">Microsoft Office</a>-dokumentum, amelynek szolgáltatója a(z) <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe></p>',
+        Szamitogep: '<h2>Számítógép szimuláció</h2><p><iframe src="https://dufoffice365-my.sharepoint.com/personal/72591192377_tanulo_bankisuli_hu/_layouts/15/Doc.aspx?sourcedoc={ddedd92c-ad83-41c7-a82b-f91d1c14601b}&amp;action=embedview" width="476px" height="288px" frameborder="0">Ez egy beágyazott <a target="_blank" href="https://office.com">Microsoft Office</a>-dokumentum, amelynek szolgáltatója a(z) <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe></p>',
+       
+	   Munkavalalo: '<h2>Munkavállalói idegen nyelv</h2><p><iframe src="https://dufoffice365-my.sharepoint.com/personal/72591192377_tanulo_bankisuli_hu/_layouts/15/Doc.aspx?sourcedoc={5754feeb-870f-432c-a1a1-556fcc13d0e3}&amp;action=embedview" width="476px" height="288px" frameborder="0">Ez egy beágyazott <a target="_blank" href="https://office.com">Microsoft Office</a>-dokumentum, amelynek szolgáltatója a(z) <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe></p>',
+        IoT: '<h2>IoT</h2><p><iframe src="https://dufoffice365-my.sharepoint.com/personal/72591192377_tanulo_bankisuli_hu/_layouts/15/Doc.aspx?sourcedoc={051a3436-ee2c-4e57-b986-b2468c399ce8}&amp;action=embedview" width="476px" height="288px" frameborder="0">Ez egy beágyazott <a target="_blank" href="https://office.com">Microsoft Office</a>-dokumentum, amelynek szolgáltatója a(z) <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe></p>',
+        Program: '<h2>Programfejlesztés</h2><p><iframe src="https://dufoffice365-my.sharepoint.com/personal/72591192377_tanulo_bankisuli_hu/_layouts/15/Doc.aspx?sourcedoc={57b2049d-22f9-47aa-807f-8bcdaad4aa4c}&amp;action=embedview" width="476px" height="288px" frameborder="0">Ez egy beágyazott <a target="_blank" href="https://office.com">Microsoft Office</a>-dokumentum, amelynek szolgáltatója a(z) <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe></p>',
+        'CAD/CAM': '<h2>Robottechnika CAD/CAM</h2><iframe src="https://dufoffice365-my.sharepoint.com/personal/72591192377_tanulo_bankisuli_hu/_layouts/15/Doc.aspx?sourcedoc={4c008597-0e54-45ee-aacc-b0b3d7014545}&amp;action=embedview" width="476px" height="288px" frameborder="0">Ez egy beágyazott <a target="_blank" href="https://office.com">Microsoft Office</a>-dokumentum, amelynek szolgáltatója a(z) <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe></p>'
+      };
+      content.innerHTML = pages[page] || `<h2>${page}</h2><p>Tartalom feltöltés alatt.</p>`;
+
+      // Tantárgyak továbbra is látszódnak az aktuális osztályban
+      if (currentClass) {
+        ['11', '12', '13'].forEach(c => {
+          document.getElementById(`additional-links-${c}`).classList.add('hidden-links');
+          document.getElementById(`link-${c}`).classList.remove('active');
+        });
+        document.getElementById(`additional-links-${currentClass}`).classList.remove('hidden-links');
+        document.getElementById(`link-${currentClass}`).classList.add('active');
+      }
+    }
+  </script>
+
+</body>
+</html>
